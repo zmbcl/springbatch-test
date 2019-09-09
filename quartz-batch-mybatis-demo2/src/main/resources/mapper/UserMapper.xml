@@ -13,4 +13,7 @@
 			<if test="id != null">ID > #{id}</if>
 		</where>
 	</select>
+	<insert id="insert" parameterType="com.lzj.springbatch.model.User">
+		insert into users(id,name,age)values (#{id},#{name},#{age});
+	</insert>
 </mapper>

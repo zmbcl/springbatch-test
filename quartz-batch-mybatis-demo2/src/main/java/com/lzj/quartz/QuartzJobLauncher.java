@@ -2,6 +2,8 @@ package com.lzj.quartz;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 //import org.h2.util.New;New
 import com.lzj.utils.RedisClient;
@@ -20,8 +22,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
 public class QuartzJobLauncher extends QuartzJobBean {
-	@Autowired
-	private RedisClient redisClient;
 /*-------------方式一：获取jobName、jobLauncher和jobLocator*/
 //	private String jobName;
 //	private JobLauncher jobLauncher;
@@ -73,6 +73,8 @@ public class QuartzJobLauncher extends QuartzJobBean {
 		try {
 			Job job = jobLocator.getJob(jobName);
 			JobExecution jobExecution = jobLauncher.run(job, new JobParametersBuilder().addDate("date", new Date()).toJobParameters());
+
+//			JobExecution jobExecution1 = jobLauncher.run(job,new JobParametersBuilder().addString("test","test005").toJobParameters());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

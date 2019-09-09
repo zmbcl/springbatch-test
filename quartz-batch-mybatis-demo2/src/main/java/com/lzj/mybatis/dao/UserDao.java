@@ -8,4 +8,6 @@ public interface UserDao {
 	
 	public List<User> select(User user);
 
+	Integer insert(User user);
+
 }
