@@ -55,7 +55,6 @@ public class MyTasklet implements Tasklet {
 			user.setName(result);
 			user.setAge(100);
 			userDao.insert(user);
-//			int j = 10/0;
 			user.setId(2);
 			user.setName("3333");
 			user.setAge(30);
@@ -63,7 +62,7 @@ public class MyTasklet implements Tasklet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		int j = 10/0;
 
 //		List<User> users = userDao.select(user);
 //		for(User user1 : users){

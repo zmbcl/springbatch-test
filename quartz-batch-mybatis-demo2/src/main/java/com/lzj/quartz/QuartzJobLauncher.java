@@ -72,9 +72,9 @@ public class QuartzJobLauncher extends QuartzJobBean {
 		
 		try {
 			Job job = jobLocator.getJob(jobName);
-			JobExecution jobExecution = jobLauncher.run(job, new JobParametersBuilder().addDate("date", new Date()).toJobParameters());
+//			JobExecution jobExecution = jobLauncher.run(job, new JobParametersBuilder().addDate("date", new Date()).toJobParameters());
 
-//			JobExecution jobExecution1 = jobLauncher.run(job,new JobParametersBuilder().addString("test","test005").toJobParameters());
+			JobExecution jobExecution1 = jobLauncher.run(job,new JobParametersBuilder().addString("test","test005").toJobParameters());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
