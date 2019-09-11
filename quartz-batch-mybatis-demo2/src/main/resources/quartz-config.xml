@@ -24,7 +24,7 @@
 	
 	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="jobDetail" ref="jobDetail"></property>
-		<property name="cronExpression" value="0 26 22 * * ?"></property>
+		<property name="cronExpression" value="0 29 9 * * ?"></property>
 		<property name="startDelay" value="3000"></property>
 	</bean>
 	

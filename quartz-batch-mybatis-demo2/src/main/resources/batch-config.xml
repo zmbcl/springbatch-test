@@ -10,26 +10,26 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 <!-- 	<context:property-placeholder location="classpath:db.properties"/> --> 
-   
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-    	<property name="dataSource" ref="dataSource"></property>
-    </bean>
-    
-    <bean id="jobRepository" class="org.springframework.batch.core.repository.support.JobRepositoryFactoryBean">
-    	<property name="dataSource" ref="dataSource"></property>
-    	<property name="transactionManager" ref="transactionManager"></property>
-    </bean>
-    
-    <bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
-    	<property name="jobRepository" ref="jobRepository"></property>
-    </bean>
-
-	<batch:job id="myJob" restartable="true">
-		<batch:step id="myStep" allow-start-if-complete="true">
-			<batch:tasklet ref="myTasklet">
-			</batch:tasklet>
-		</batch:step>
-	</batch:job>
+<!--   事务管理器-->
+<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<property name="dataSource" ref="dataSource"></property>
+</bean>
+<!--    工厂模块，持久化job-->
+<bean id="jobRepository" class="org.springframework.batch.core.repository.support.JobRepositoryFactoryBean">
+	<property name="dataSource" ref="dataSource"></property>
+	<property name="transactionManager" ref="transactionManager"></property>
+</bean>
+<!--    启动器-->
+<bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+	<property name="jobRepository" ref="jobRepository"></property>
+</bean>
+<!--	step配置-->
+<batch:job id="myJob" restartable="true">
+	<batch:step id="myStep" allow-start-if-complete="true">
+		<batch:tasklet ref="myTasklet">
+		</batch:tasklet>
+	</batch:step>
+</batch:job>
 	
 	<bean id="myTasklet" class="com.lzj.springbatch.tasklet.MyTasklet">
 		<!-- <property name="dataSource" ref="dataSource"></property> -->
